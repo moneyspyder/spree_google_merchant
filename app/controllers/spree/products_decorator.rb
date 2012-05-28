@@ -1,4 +1,4 @@
-Spree::ProductsController.class_eval do
+class Spree::ProductsController < Spree::BaseController
   def google_merchant
     @products = Spree::Product.all
   end
