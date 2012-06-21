@@ -5,18 +5,17 @@ Provides a live product feed for Google Merchant rather a file that you have to 
 
 To access the feed visit:
 
-    http://yoursite.com/products/google_merchant.rss
+    http://yoursite.com/google_merchant.rss
 
 Installation
 ------------
 
 To start with you'll need a Google Merchant account. Then:
   
-    gem "spree_google_merchant", :git => 'git://github.com/sebastyuiop/spree_google_merchant.git'
+    gem "spree_google_merchant", :git => 'git://github.com/nebulab/spree_google_merchant.git'
     
     bundle install
 
-    rake spree_google_merchant:install
     
 To configure the feed title, description and site URL go to the Google Merchant settings page in Admin -> Configuration
 
