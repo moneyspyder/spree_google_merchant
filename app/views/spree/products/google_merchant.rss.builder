@@ -7,7 +7,8 @@ xml.rss "version" => "2.0", "xmlns:g" => "http://base.google.com/ns/1.0" do
     
     production_domain = Spree::GoogleMerchant::Config[:production_domain]
     xml.link production_domain
-    
+    calculator = Spree::Country.find_by_iso('US').zone.shipping_methods.first.calculator
+
     @products.each do |product|
       xml.item do
         xml.id product.id.to_s
@@ -18,7 +19,9 @@ xml.rss "version" => "2.0", "xmlns:g" => "http://base.google.com/ns/1.0" do
         xml.tag! "g:id", product.id.to_s
         xml.tag! "g:price", product.price
         xml.tag! "g:condition", "new"
-        xml.tag! "g:image_link", production_domain.sub(/\/$/, '') + product.images.first.attachment.url(:product) unless product.images.empty?
+        xml.tag! "g:availability", "in stock"
+        xml.tag! "g:shipping", calculator.compute(product)
+        xml.tag! "g:image_link", product.images.first.attachment.url(:product) unless product.images.empty?
       end
     end
   end
