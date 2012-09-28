@@ -4,7 +4,7 @@ xml.rss "version" => "2.0", "xmlns:g" => "http://base.google.com/ns/1.0" do
   xml.channel do
     xml.title Spree::GoogleMerchant::Config[:google_merchant_title]
     xml.description Spree::GoogleMerchant::Config[:google_merchant_description]
-    
+
     production_domain = Spree::GoogleMerchant::Config[:production_domain]
     xml.link production_domain
     calculator = Spree::Country.find_by_iso('US').zone.shipping_methods.first.calculator
@@ -20,7 +20,10 @@ xml.rss "version" => "2.0", "xmlns:g" => "http://base.google.com/ns/1.0" do
         xml.tag! "g:price", product.price
         xml.tag! "g:condition", "new"
         xml.tag! "g:availability", "in stock"
-        xml.tag! "g:shipping", calculator.compute(product)
+        xml.tag! "g:shipping" do
+          xml.tag! "g:country", country_code
+          xml.tag! "g:price", calculator.compute(product)
+        end
         xml.tag! "g:image_link", product.images.first.attachment.url(:product) unless product.images.empty?
       end
     end
