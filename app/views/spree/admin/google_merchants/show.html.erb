@@ -1,20 +1,26 @@
 <%= render :partial => '/spree/admin/shared/configuration_menu' %>
 
-<h1><%= t("google_merchant_settings") %></h1>
+<% content_for :page_title do %>
+  <%= t("google_merchant_settings") %>
+<% end %>
 
-<table>
-  <tr>
-    <th scope="row"><%= t("google_merchant_title") %>:</th>
-    <td><%= Spree::GoogleMerchant::Config[:google_merchant_title] %></td>
-  </tr>
-  <tr>
-    <th scope="row"><%= t("google_merchant_description") %>:</th>
-    <td><%= Spree::GoogleMerchant::Config[:google_merchant_description] %></td>
-  </tr>
-  <tr>
-    <th scope="row"><%= t("production_domain") %>:</th>
-    <td><%= Spree::GoogleMerchant::Config[:production_domain] %></td>
-  </tr>
+<% content_for :page_actions do %>
+  <li><%= link_to_with_icon 'icon-edit', t("edit"), edit_admin_google_merchants_path, :id => 'admin_google_merchants_link', :class => 'button' %></li>
+<% end %>
+
+<table class='index'>
+  <tbody>
+    <tr>
+      <td scope="row"><%= t("google_merchant_title") %>:</td>
+      <td><%= Spree::GoogleMerchant::Config[:google_merchant_title] %></td>
+    </tr>
+    <tr>
+      <td scope="row"><%= t("google_merchant_description") %>:</td>
+      <td><%= Spree::GoogleMerchant::Config[:google_merchant_description] %></td>
+    </tr>
+    <tr>
+      <td scope="row"><%= t("production_domain") %>:</td>
+      <td><%= Spree::GoogleMerchant::Config[:production_domain] %></td>
+    </tr>
+  </tbody>
 </table>
-
-<p><%= link_to_with_icon 'edit', t("edit"), edit_admin_google_merchants_path, :id => 'admin_google_merchants_link' %></p>
