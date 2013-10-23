@@ -19,9 +19,9 @@ xml.rss "version" => "2.0", "xmlns:g" => "http://base.google.com/ns/1.0" do
         xml.tag! "g:price", product.price
         xml.tag! "g:condition", "new"
         xml.tag! "g:availability", "in stock"
-        xml.tag! "g:image_link", product.images.first.attachment.url(:product) unless product.images.empty?
+        xml.tag! "g:image_link", (production_domain + product.images.first.attachment.url(:product)) unless product.images.empty?
         (product.images[1..10] || []).each do |image|
-          xml.tag! "g:additional_image_link", image.attachment.url(:product)
+          xml.tag! "g:additional_image_link", production_domain + image.attachment.url(:product)
         end
       end
     end
