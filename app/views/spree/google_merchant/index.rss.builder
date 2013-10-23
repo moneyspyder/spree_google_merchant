@@ -23,6 +23,8 @@ xml.rss "version" => "2.0", "xmlns:g" => "http://base.google.com/ns/1.0" do
         (product.images[1..10] || []).each do |image|
           xml.tag! "g:additional_image_link", production_domain + image.attachment.url(:product)
         end
+        xml.tag! "g:brand", product.brand if product.brand.present?
+        xml.tag! "g:gtin", product.gtin if product.gtin.present?
       end
     end
   end
