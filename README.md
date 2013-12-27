@@ -11,12 +11,12 @@ Installation
 ------------
 
 To start with you'll need a Google Merchant account. Then:
-  
-    gem "spree_google_merchant", :git => 'git://github.com/nebulab/spree_google_merchant.git'
-    
+
+    gem "spree_google_merchant", github: 'swalberg/spree_google_merchant', branch: '2-1-stable'
+
     bundle install
 
-    
+ 
 To configure the feed title, description and site URL go to the Google Merchant settings page in Admin -> Configuration
 
 Copyright (c) 2011 sebastyuiop, released under the New BSD License
