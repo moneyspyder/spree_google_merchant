@@ -3,9 +3,9 @@ Summary
 
 Provides a live product feed for Google Merchant rather a file that you have to upload.
 
-Updated to work with Spree 2.3 and spree_sale_price.
+Updated to work with Spree 2.3 and spree-sale-pricing.
 
-The Renuo spree_sale_price gem is required to show sale_prices
+The [Renuo GmbH spree-sale-pricing gem](https://github.com/renuo/spree-sale-pricing) is required to show sale_prices
 
 To access the configuration visit:
 
