@@ -11,3 +11,6 @@ class Spree::Admin::GoogleMerchantsController < Spree::Admin::BaseController
   end
 
 end
+
+
+

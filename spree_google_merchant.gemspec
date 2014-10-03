@@ -6,9 +6,8 @@ Gem::Specification.new do |s|
   s.description = 'Add (optional) gem description here'
   s.required_ruby_version = '>= 1.9.3'
   s.required_rubygems_version = '>= 1.8.23'
-
-  s.author            = 'Renuo GmbH, Seb Weston'
-  s.email             = 'info@renuo.ch, sebweston@gmail.com'
+  s.author            = 'Renuo GmbH, Sam T, Seb Weston'
+  s.email             = 'info@renuo.ch, samtreweek@gmail.com, sebweston@gmail.com'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

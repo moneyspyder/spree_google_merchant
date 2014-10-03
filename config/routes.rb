@@ -1,9 +1,5 @@
-Spree::Core::Engine.routes.append do
-  resources :products do 
-    collection do 
-      get :google_merchant
-    end
-  end
+Spree::Core::Engine.routes.draw do
+  get "google_merchant" => 'google_merchant#index', :constraints => {:format => :rss}
 
   namespace :admin do
     resource :google_merchants
