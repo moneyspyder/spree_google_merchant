@@ -14,13 +14,13 @@ xml.rss 'version' => '2.0', 'xmlns:g' => 'http://base.google.com/ns/1.0' do
         xml.title product.name
         xml.description product.description.strip_html_tags unless product.description.blank?
         xml.link product_url(product, host: production_domain)
-        xml.tag! "g:mpn", product.sku.to_s
+        xml.tag! "g:mpn", product.master.sku.to_s
         xml.tag! "g:id", product.id.to_s
-        if product.respond_to?(:on_sale?) && product.on_sale?
-          xml.tag! "g:price", product.original_price
+        if product.price < product.msrp
+          xml.tag! "g:price", product.msrp
           xml.tag! "g:sale_price", product.price
         else
-          xml.tag! "g:price", product.price
+          xml.tag! "g:price", product.msrp
         end
         xml.tag! "g:condition", 'new'
         xml.tag! "g:availability", product.master.can_supply? ? "in stock" : "out of stock"
