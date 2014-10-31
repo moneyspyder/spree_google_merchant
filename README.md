@@ -3,9 +3,9 @@ Summary
 
 Provides a live product feed for Google Merchant rather a file that you have to upload.
 
-Updated to work with Spree 2.3 and spree-sale-pricing.
+Updated to work with Spree 2.3.
 
-The [Renuo GmbH spree-sale-pricing gem](https://github.com/renuo/spree-sale-pricing) is required to show sale_prices
+Sale prices are based on a difference between the lowest price and msrp. If the lowest price is lower than the msrp the product is on sale.
 
 To access the configuration visit:
 
@@ -20,7 +20,7 @@ Installation
 
 To start with you'll need a Google Merchant account. Then:
   
-    gem "spree_google_merchant", github => 'renuo/spree_google_merchant', ref: '2-3-stable'
+    gem "spree_google_merchant", github => 'deseretbook/spree_google_merchant', ref: '2-3-stable'
     
     bundle install
  
