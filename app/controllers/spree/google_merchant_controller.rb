@@ -4,7 +4,9 @@ module Spree
 
     def index
       @products = Spree::Product.active.includes(:master => [:images])
-      respond_with(@products)
+      respond_with @products do |format|
+        format.rss { render :layout => false }
+      end
     end
   end
 end
