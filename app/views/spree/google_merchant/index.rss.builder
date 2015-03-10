@@ -28,8 +28,19 @@ xml.rss 'version' => '2.0', 'xmlns:g' => 'http://base.google.com/ns/1.0' do
         (product.images[1..10] || []).each do |image|
           xml.tag! "g:additional_image_link", image.attachment.url(:product)
         end
-        xml.tag! "g:brand", product.property("brand") if product.property("brand").present?
+        if product.property("brand").present?
+          xml.tag! "g:brand", product.property("brand") if product.property("brand").present?
+        else
+          xml.tag! "g:brand", current_store.name
+        end
         xml.tag! "g:gtin", product.property("gtin") if product.property("gtin").present?
+        xml.tag! "g:tax" do
+          xml.tag! "g:rate", "0.0865"
+          xml.tag! "g:tax_ship", "y"
+        end
+        xml.tag! "g:shipping" do
+          xml.tag! "g:price", "5.00"
+        end
       end
     end
   end
