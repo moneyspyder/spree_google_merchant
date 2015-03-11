@@ -39,7 +39,7 @@ xml.rss 'version' => '2.0', 'xmlns:g' => 'http://base.google.com/ns/1.0' do
           xml.tag! "g:tax_ship", "y"
         end
         xml.tag! "g:shipping" do
-          xml.tag! "g:price", Spree::ShippingMethod.first.calculator.compute(product).to_s
+          xml.tag! "g:price", Spree::ShippingMethod.first.calculator.compute_product(product).to_s
         end
       end
     end
