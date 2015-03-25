@@ -39,7 +39,11 @@ xml.rss 'version' => '2.0', 'xmlns:g' => 'http://base.google.com/ns/1.0' do
           xml.tag! "g:tax_ship", "y"
         end
         xml.tag! "g:shipping" do
-          xml.tag! "g:price", Spree::ShippingMethod.first.calculator.compute_product(product).to_s
+          if Spree::ShippingMethod.first.calculator.respond_to?(:compute_from_price) # we only care about price sack
+            xml.tag! "g:price", Spree::ShippingMethod.first.calculator.compute_from_price(product.price).to_s
+          else
+            xml.tag! "g:price", "0"
+          end
         end
       end
     end
