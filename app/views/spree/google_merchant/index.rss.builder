@@ -22,11 +22,13 @@ xml.rss 'version' => '2.0', 'xmlns:g' => 'http://base.google.com/ns/1.0' do
         else
           xml.tag! "g:price", product.price
         end
-        if.product.respond_to?(:google_merchant_category)
+
+        if product.respond_to?(:google_merchant_category)
           xml.tag! "g:product_category", product.google_merchant_category
         else
           xml.tag! "g:product_category", "Health &amp; Beauty &gt; Personal Care &gt; Cosmetics &gt; Makeup"
         end
+        
         if product.respond_to?(:google_merchant_type) 
           xml.tag! "g:product_type", product.google_merchant_type
         else
