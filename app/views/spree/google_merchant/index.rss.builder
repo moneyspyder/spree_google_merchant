@@ -26,13 +26,13 @@ xml.rss 'version' => '2.0', 'xmlns:g' => 'http://base.google.com/ns/1.0' do
         if product.respond_to?(:google_merchant_category)
           xml.tag! "g:product_category", product.google_merchant_category
         else
-          xml.tag! "g:product_category", "Health &amp; Beauty &gt; Personal Care &gt; Cosmetics &gt; Makeup"
+          xml.tag! "g:product_category", "Health & Beauty > Personal Care > Cosmetics > Makeup"
         end
         
         if product.respond_to?(:google_merchant_type) 
           xml.tag! "g:product_type", product.google_merchant_type
         else
-          xml.tag! "g:product_type", "Health &amp; Beauty &gt; Personal Care &gt; Cosmetics &gt; Makeup"
+          xml.tag! "g:product_type", "Health & Beauty > Personal Care > Cosmetics > Makeup"
         end
         #xml.tag! "g:product_type", 
         xml.tag! "g:condition", 'new'
