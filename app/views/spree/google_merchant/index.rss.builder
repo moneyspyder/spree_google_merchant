@@ -24,9 +24,9 @@ xml.rss 'version' => '2.0', 'xmlns:g' => 'http://base.google.com/ns/1.0' do
         end
 
         if product.respond_to?(:google_merchant_category)
-          xml.tag! "g:product_category", product.google_merchant_category
+          xml.tag! "g:google_product_category", product.google_merchant_category
         else
-          xml.tag! "g:product_category", "Health & Beauty > Personal Care > Cosmetics > Makeup"
+          xml.tag! "g:google_product_category", "Health & Beauty > Personal Care > Cosmetics > Makeup"
         end
         
         if product.respond_to?(:google_merchant_type) 
