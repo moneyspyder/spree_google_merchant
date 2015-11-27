@@ -31,7 +31,13 @@ xml.item do
   #xml.tag! "g:product_type",
   xml.tag! "g:condition", 'new'
   xml.tag! "g:availability", product.master.can_supply? ? "in stock" : "out of stock"
-  xml.tag! "g:image_link", product.images.first.attachment.url(:product) unless product.images.empty?
+
+  if product.feed_image?
+    xml.tag! "g:image_link", product.feed_image.url(:product)
+  else
+    xml.tag! "g:image_link", product.images.first.attachment.url(:product) unless product.images.empty?
+  end
+
   (product.images[1..10] || []).each do |image|
     xml.tag! "g:additional_image_link", image.attachment.url(:product)
   end
