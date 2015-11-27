@@ -5,6 +5,8 @@
   </div>
 
   <div class="field">
+    <%= image_tag(@product.feed_image.url(:thumbnail)) %>
+
     <%= file_field(:product, :feed_image) %>
     <%= f.label :feed_image, Spree.t(:feed_image)%>
   </div>
