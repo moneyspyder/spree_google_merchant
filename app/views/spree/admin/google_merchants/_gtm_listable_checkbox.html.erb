@@ -3,4 +3,9 @@
     <%= f.check_box(:gtm_listable) %>
     <%= f.label :gtm_listable, Spree.t(:gtm_listable)%>
   </div>
+
+  <div class="field">
+    <%= file_field(:product, :feed_image) %>
+    <%= f.label :feed_image, Spree.t(:feed_image)%>
+  </div>
 </div>
