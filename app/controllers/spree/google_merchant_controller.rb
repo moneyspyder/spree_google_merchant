@@ -3,9 +3,8 @@ module Spree
     respond_to :rss
 
     def index
-      @products = Spree::Product.active
-                      .where(gtm_listable: true)
-                      .includes(:master => [:images])
+      @products = Spree::Variant.where(include_in_google_product_feed: true)
+                      #.includes(:master => [:images])
 
       respond_with(@products)
     end
