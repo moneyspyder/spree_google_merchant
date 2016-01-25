@@ -1,27 +1,30 @@
-module Spree::GoogleMerchant
-end
+require 'spree_core'
+require 'spree_google_merchant/engine'
 
-module SpreeGoogleMerchant
-  class Engine < Rails::Engine
+# module Spree::GoogleMerchant
+# end
 
-    engine_name 'spree_google_merchant'
+# module SpreeGoogleMerchant
+#   class Engine < Rails::Engine
 
-    config.autoload_paths += %W(#{config.root}/lib)
+#     engine_name 'spree_google_merchant'
 
-    def self.activate
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
-        Rails.env.production? ? require(c) : load(c)
-      end
-    end
+#     config.autoload_paths += %W(#{config.root}/lib)
 
-    config.to_prepare &method(:activate).to_proc
+#     def self.activate
+#       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
+#         Rails.env.production? ? require(c) : load(c)
+#       end
+#     end
 
-    # instantiate the configuration object
-    initializer "spree.google_merchant.preferences", :after => "spree.environment" do |app|
-      Spree::GoogleMerchant::Config = Spree::GoogleMerchantConfiguration.new
-    end
+#     config.to_prepare &method(:activate).to_proc
 
-  end
-end
+#     # instantiate the configuration object
+#     initializer "spree.google_merchant.preferences", :after => "spree.environment" do |app|
+#       Spree::GoogleMerchant::Config = Spree::GoogleMerchantConfiguration.new
+#     end
+
+#   end
+# end
 
 
